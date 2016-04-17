@@ -1,4 +1,4 @@
-var search, results, allStuds = [];
+var search, results, count=0, key, allStuds = [];
 
 
 var rebuildAndRerunSearch = function () {
@@ -24,107 +24,9 @@ var updateStudsTable = function (Studs) {
 
     var tokens = search.tokenizer.tokenize(searchInput.value);
     console.log(Studs);
-    console.log(StudsallStuds = {
-    "id":[
-    {
-        "name": "Aakarsh",
-        "social": "www.aakarsh.com",
-        "location": "Indore",
-        "interests": "Python",
-        "contact": "9899100101",
-        "email": "a@a.com"
-    },
-
-    {
-        "name": "Aarshiya",
-        "social": "www.aarshiya.com",
-        "location": "sgnr",
-        "interests": "PHP",
-        "contact": "9879100101",
-        "email": "ar@ar.com"
-    },
-
-    {
-        "name": "Sonali",
-        "social": "www.sonali.com",
-        "location": "Jaipur",
-        "interests": "Django",
-        "contact": "9819100101",
-        "email": "so@so.com"
-    },
-
-    {
-        "name": "Swapnil",
-        "social": "www.pandey.com",
-        "location": "Delhi",
-        "interests": "Android",
-        "contact": "9009100101",
-        "email": "sw@sw.com"
-    },
-
-    {
-        "name": "Zaheer",
-        "social": "www.zak.com",
-        "location": "Mumbai",
-        "interests": "Cricket",
-        "contact": "9899456101",
-        "email": "zk@zk.com"
-    }
-
-]
-});
-    allStuds = {
-    "id":[
-    {
-        "name": "Aakarsh",
-        "social": "www.aakarsh.com",
-        "location": "Indore",
-        "interests": "Python",
-        "contact": "9899100101",
-        "email": "a@a.com"
-    },
-
-    {
-        "name": "Aarshiya",
-        "social": "www.aarshiya.com",
-        "location": "sgnr",
-        "interests": "PHP",
-        "contact": "9879100101",
-        "email": "ar@ar.com"
-    },
-
-    {
-        "name": "Sonali",
-        "social": "www.sonali.com",
-        "location": "Jaipur",
-        "interests": "Django",
-        "contact": "9819100101",
-        "email": "so@so.com"
-    },
-
-    {
-        "name": "Swapnil",
-        "social": "www.pandey.com",
-        "location": "Delhi",
-        "interests": "Android",
-        "contact": "9009100101",
-        "email": "sw@sw.com"
-    },
-
-    {
-        "name": "Zaheer",
-        "social": "www.zak.com",
-        "location": "Mumbai",
-        "interests": "Cricket",
-        "contact": "9899456101",
-        "email": "zk@zk.com"
-    }
-
-]
-}.length;
     
     
-    var key, count = 0;
+    
 for(key in Studs.id) {
   if(Studs.id.hasOwnProperty(key)) {
     count++;
@@ -134,7 +36,7 @@ for(key in Studs.id) {
     
     for (var i = 0, length = count; i < length; i++) {
         var stud = Studs.id[i];
-        console.log(Studs.id[i]);
+        //console.log(Studs.id[i]);
         var nameCol = document.createElement('td');
         nameCol.innerText = stud.name;
 
@@ -205,7 +107,7 @@ xmlhttp.onreadystatechange = function () {
 
         allStuds = json;
         console.log(allStuds);
-        updatestudCount(allStuds.length);
+        updatestudCount(count);
 
         var loadingProgressBar = document.getElementById('loadingProgressBar');
         hideElement(loadingProgressBar);
