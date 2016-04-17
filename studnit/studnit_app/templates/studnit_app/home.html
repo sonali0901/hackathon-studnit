@@ -34,12 +34,40 @@
     </nav>
 
     <div style="margin: 10px">
-        <a class="waves-effect waves-light btn" href="y12.html">y12</a>
-        <a class="waves-effect waves-light btn" href="y13.html">y13</a>
-        <a class="waves-effect waves-light btn" href="y14.html">y14</a>
-        <a class="waves-effect waves-light btn" href="y15.html">y15</a>
+        <a class="waves-effect waves-light btn">y12</a>
+        <a class="waves-effect waves-light btn">y13</a>
+        <a class="waves-effect waves-light btn">y14</a>
+        <a class="waves-effect waves-light btn">y15</a>
+    </div>
+	 <div id="chat-body" class="panel panel-default">
+        <div class="panel-heading">Chat Box</div>
+        <div id="msg-list-div" class="panel-body">
+            <ul id="msg-list" class="list-group">
+                {% for obj in chat %}
+                    {% if obj.user == request.user %}
+                        <li class="text-right list-group-item">{{ obj.message }}</li>
+                    {% else %}
+                        <li class="text-left list-group-item">{{ obj.message }}</li>
+                    {% endif %}
+                {% empty %}
+                    <li class="text-right list-group-item">No messages yet!</li>
+                {% endfor %}
+                <script>
+                    var chatlist = document.getElementById('msg-list-div');
+                    chatlist.scrollTop = chatlist.scrollHeight;
+                </script>
+            </ul>
+        </div>
     </div>
 
+    <form id="chat-form" method="post" action="/post/">
+        <div id="chat-bottom" class="input-group">
+            <input type="text" id="chat-msg" name="chat-msg" class="form-control"/>
+            <span class="input-group-btn">
+                <input class="btn btn-default" id="send" type="submit" value="Send"/>
+            </span>
+        </div>
+    </form>
 
 </body>
 
