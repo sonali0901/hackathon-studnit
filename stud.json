@@ -1,0 +1,49 @@
+{
+    "id":[
+    {
+        "name": "Aakarsh",
+        "social": "www.aakarsh.com",
+        "location": "Indore",
+        "interests": "Python",
+        "contact": "9899100101",
+        "email": "a@a.com"
+    },
+
+    {
+        "name": "Aarshiya",
+        "social": "www.aarshiya.com",
+        "location": "sgnr",
+        "interests": "PHP",
+        "contact": "9879100101",
+        "email": "ar@ar.com"
+    },
+
+    {
+        "name": "Sonali",
+        "social": "www.sonali.com",
+        "location": "Jaipur",
+        "interests": "Django",
+        "contact": "9819100101",
+        "email": "so@so.com"
+    },
+
+    {
+        "name": "Swapnil",
+        "social": "www.pandey.com",
+        "location": "Delhi",
+        "interests": "Android",
+        "contact": "9009100101",
+        "email": "sw@sw.com"
+    },
+
+    {
+        "name": "Zaheer",
+        "social": "www.zak.com",
+        "location": "Mumbai",
+        "interests": "Cricket",
+        "contact": "9899456101",
+        "email": "zk@zk.com"
+    }
+
+]
+}
