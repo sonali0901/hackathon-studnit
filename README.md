@@ -1,1 +1,2 @@
-# hackathon-studnit
+#Overview
+Studnit is a Web Application which help the students on issues related to discussions and availability on any specific reason.Web App has contact details of the students year wise through which the user can contact other members when they need any help.Also the personal details of the members will not be made public without their approval.User can post messages(one liners) when they need information as per their concern. Web App has search option through tags to filter posts that is the lists of the most recent posts,popular posts,displaying the details of a particular post.
