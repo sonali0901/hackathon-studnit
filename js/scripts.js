@@ -1,4 +1,5 @@
-var search, results, count=0, key, allStuds = [];
+var search, results, count = 0,
+    key, allStuds = [];
 
 
 var rebuildAndRerunSearch = function () {
@@ -11,7 +12,19 @@ var rebuildSearchIndex = function () {
     search = new JsSearch.Search('name');
 
     //console.log(allStuds);
-    search.addDocuments(allStuds);
+    search.addIndex('name');
+    console.log(search.addIndex('name'));
+    search.addIndex('social');
+    search.addIndex('location');
+    search.addIndex('interests');
+    search.addIndex('contact');
+    search.addIndex('email');
+    search.addDocuments(allStuds.id[0]);
+    search.addDocuments(allStuds.id[1]);
+    search.addDocuments(allStuds.id[2]);
+    search.addDocuments(allStuds.id[3]);
+    search.addDocuments(allStuds.id[4]);
+    console.log(allStuds.id[1]);
 };
 
 var indexedStudsTable = document.getElementById('indexedStudsTable');
@@ -23,20 +36,22 @@ var updateStudsTable = function (Studs) {
     indexedStudsTBody.innerHTML = '';
 
     var tokens = search.tokenizer.tokenize(searchInput.value);
-    console.log(Studs);
-    
-    
-    
-for(key in Studs.id) {
-  if(Studs.id.hasOwnProperty(key)) {
-    count++;
-  }
-}
+    //console.log(Studs);
+
+
+
+    for (key in Studs.id) {
+        if (Studs.id.hasOwnProperty(key)) {
+            count++;
+        }
+    }
     console.log(count);
-    
+
     for (var i = 0, length = count; i < length; i++) {
         var stud = Studs.id[i];
-        //console.log(Studs.id[i]);
+
+        // console.log(Studs);
+        console.log(Studs.id[i]);
         var nameCol = document.createElement('td');
         nameCol.innerText = stud.name;
 
@@ -72,18 +87,19 @@ for(key in Studs.id) {
 
 var updatestudCountAndTable = function () {
     updatestudCount(results.length);
-
+    console.log(results.length);
     if (results.length > 0) {
         updateStudsTable(results);
     } else if (!!searchInput.value) {
         updateStudsTable([]);
     } else {
-        updatestudCount(allStuds.length);
+        updatestudCount(count);
         updateStudsTable(allStuds);
     }
 };
 
 var searchStuds = function () {
+    console.log(searchInput.value);
     results = search.search(searchInput.value);
     updatestudCountAndTable();
 };
@@ -102,20 +118,22 @@ var showElement = function (element) {
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        var json = JSON.parse(xmlhttp.responseText);
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var json = JSON.parse(xmlhttp.responseText);
 
-        allStuds = json;
-        console.log(allStuds);
-        updatestudCount(count);
+            allStuds = json;
+            console.log(allStuds);
+            updatestudCount(count);
 
-        var loadingProgressBar = document.getElementById('loadingProgressBar');
-        hideElement(loadingProgressBar);
-        showElement(indexedStudsTable);
+            var loadingProgressBar = document.getElementById('loadingProgressBar');
+            hideElement(loadingProgressBar);
+            showElement(indexedStudsTable);
 
-        rebuildSearchIndex();
-        updateStudsTable(allStuds);
+            rebuildSearchIndex();
+            updateStudsTable(allStuds);
+        }
     }
-}
+  
 xmlhttp.open('GET', 'stud.json', true);
+xmlhttp.overrideMimeType('text/plain');
 xmlhttp.send();
